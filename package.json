@@ -1,0 +1,22 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matubo3/portfolio.git"
+  },
+  "author": "matub3",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matubo3/portfolio/issues"
+  },
+  "homepage": "https://github.com/matubo3/portfolio#readme",
+  "devDependencies": {
+    "httpserver": "^0.3.0"
+  }
+}
