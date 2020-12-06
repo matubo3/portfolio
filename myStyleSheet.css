@@ -1,4 +1,15 @@
+body {
+  font-family: "BIZ UDPゴシック";
+}
 
 h1 {
-  font-size: 1rem;  
+  color: brown;  
+}
+
+h2 {
+  color: darkorange;
+}
+
+.list-item {
+  line-height: 1.5;
 }
