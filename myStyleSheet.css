@@ -13,3 +13,17 @@ h2 {
 .list-item {
   line-height: 1.5;
 }
+
+.box {
+  background-color: #ffbfff;
+  padding: 0.1rem;
+  margin: 1rem;
+  border-radius: 35px;
+  background: linear-gradient(270deg, rgba(26, 26, 255, 0.76), #FF7F7E);
+  color: white;
+  box-shadow: 5px 5px 10px 3px silver;
+}
+
+.delete-button {
+  display: none;
+}
