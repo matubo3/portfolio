@@ -29,8 +29,27 @@ function countUp(){
 }
 
 function talk(){
-    textBox = document.getElementsByName('texts')[0].value
+    const textBox = document.getElementsByName('texts')[0].value
     const p = document.createElement('p')
+    const button = document.createElement('button')
     const texts = document.createTextNode(textBox)
-    document.body.appendChild(p).appendChild(texts)  
+    const deleteButton = document.createTextNode('×')
+    document.body.appendChild(p).appendChild(texts)
+    document.body.appendChild(p).appendChild(button).appendChild(deleteButton) 
+    button.className = 'delete-button'
+    button.setAttribute('onclick','removeTexts(this)')
+    p.setAttribute('onmouseover','removeCssClass(this)')
+    p.setAttribute('onmouseout','moveCssClass(this)')
+}
+
+function removeCssClass(element) {
+    element.lastChild.className = ' '
+}
+
+function moveCssClass(element) {
+    element.lastChild.className = 'delete-button'
+}
+
+function removeTexts(element) {
+    element.parentNode.remove()
 }
