@@ -28,11 +28,19 @@ function countUp(){
     document.body.appendChild(span).appendChild(inode)
 }
 
+let messageCounter = 0
+
 function talk(){
-    const textBox = document.getElementsByName('texts')[0].value
+    const message = document.getElementsByName('texts')[0].value
+    window.localStorage.setItem(messageCounter, message)
+    createMessageDom(message)
+    console.log(`キー「${messageCounter}」を保存しました`)
+}
+
+function createMessageDom(message) {
     const p = document.createElement('p')
     const button = document.createElement('button')
-    const texts = document.createTextNode(textBox)
+    const texts = document.createTextNode(message)
     const deleteButton = document.createTextNode('×')
     document.body.appendChild(p).appendChild(texts)
     document.body.appendChild(p).appendChild(button).appendChild(deleteButton) 
@@ -40,6 +48,8 @@ function talk(){
     button.setAttribute('onclick','removeTexts(this)')
     p.setAttribute('onmouseover','removeCssClass(this)')
     p.setAttribute('onmouseout','moveCssClass(this)')
+    p.setAttribute('id', messageCounter)
+    messageCounter += 1
 }
 
 function removeCssClass(element) {
@@ -52,4 +62,16 @@ function moveCssClass(element) {
 
 function removeTexts(element) {
     element.parentNode.remove()
+    window.localStorage.removeItem(element.parentNode.getAttribute('id'))
+    console.log(element.parentNode.getAttribute('id'))
+}
+
+let archiveMessageCounter = 0
+function loadMessage() {
+    while (true) {
+        let archiveMessage = window.localStorage.getItem(archiveMessageCounter)
+        if (archiveMessage == null) break
+        createMessageDom(archiveMessage)
+        archiveMessageCounter += 1
+    }    
 }
