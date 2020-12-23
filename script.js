@@ -41,14 +41,15 @@ function createMessageDom(message) {
     const p = document.createElement('p')
     const button = document.createElement('button')
     const texts = document.createTextNode(message)
-    const deleteButton = document.createTextNode('×')
+    const deleteMark = document.createTextNode('×')
     document.body.appendChild(p).appendChild(texts)
-    document.body.appendChild(p).appendChild(button).appendChild(deleteButton) 
+    document.body.appendChild(p).appendChild(button).appendChild(deleteMark) 
     button.className = 'delete-button'
     button.setAttribute('onclick','removeTexts(this)')
     p.setAttribute('onmouseover','removeCssClass(this)')
     p.setAttribute('onmouseout','moveCssClass(this)')
     p.setAttribute('id', messageCounter)
+    p.setAttribute('name', 'message')
     messageCounter += 1
 }
 
@@ -62,8 +63,15 @@ function moveCssClass(element) {
 
 function removeTexts(element) {
     element.parentNode.remove()
-    window.localStorage.removeItem(element.parentNode.getAttribute('id'))
-    console.log(element.parentNode.getAttribute('id'))
+    window.localStorage.clear()
+    let messageList = document.getElementsByName('message')
+    messageList.forEach(function(x, i){
+        x.setAttribute('id', i)
+        window.localStorage.setItem(i, x.innerText)
+        console.log(x)
+    })
+    messageCounter -= 1
+    //window.localStorage.setItem(bango,'bunsyo')
 }
 
 let archiveMessageCounter = 0
